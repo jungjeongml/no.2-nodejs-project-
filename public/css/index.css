@@ -1,0 +1,172 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul > li {
+  list-style: none;
+}
+
+.navbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 7px 14px;
+}
+
+.navbar_menu {
+  display: flex;
+  padding-left: 400px;
+}
+
+.navbar_menu > li {
+  padding: 7px 14px;
+  font-size: 25px;
+}
+
+.header_icon {
+  padding-left: 300px;
+}
+
+.fa-brands {
+  line-height: 40px;
+  color: white;
+}
+
+#menu_icon {
+  display: none;
+  
+}
+
+#menu_icon + label {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#menu_icon + label span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px;
+  background:white;
+  transition: all .35s;
+}
+
+#menu_icon + label span:nth-child(1) {
+  top: 0;
+}
+
+#menu_icon + label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#menu_icon + label span:nth-child(3) {
+  bottom: 0;
+}
+
+#menu_icon:checked + label {
+  z-index: 2;
+}
+
+#menu_icon:checked + label span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#menu_icon:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu_icon:checked + label span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.sidemenu {
+  width: 300px;
+  height: 100%;
+  background: #324;
+  position: fixed;
+  top:0;
+  right: -300px;
+  z-index: 1;
+  transition: all .35s;
+}
+
+#menu_icon:checked + label + div{
+  right: 0;
+}
+
+.content {
+  width: 100%;
+  
+}
+
+.content_wrap {
+  background: url('../image/art-g1034bee8d_1920.jpg') no-repeat center ;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  transition: 0.8s;
+}
+
+.content_wrap::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: absolute;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+.content_wrap:hover {
+  transform: scale(1.1);
+}
+
+.content_phrase {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.content_wrap p {
+  font-size: 50px;
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
+.content_phrase a {
+  display: inline-block;
+  margin-top: 10px;
+  color: black;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 30px;
+  background: white;
+  padding: 10px;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  left: 50%;
+}
+
