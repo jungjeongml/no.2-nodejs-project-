@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   class User extends Sequelize.model {
     static initialize(){
-      this.init({
+      return this.init({
         userid:{
           type: Sequelize.STRING(20),
           allowNull: false,
