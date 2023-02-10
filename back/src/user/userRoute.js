@@ -1,12 +1,15 @@
 const express = require('express')
 const router = express.Router()
+const {userController: controller} = require('./userModule')
+
+
 
 router.get('/join', (req, res, next) => {
 
 })
 
 router.post('/join', (req, res, next) => {
-
+  controller.postSignup(req, res, next)
 })
 
 router.post('/login', (req, res, next) => {

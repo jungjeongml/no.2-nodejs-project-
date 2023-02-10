@@ -4,6 +4,6 @@ const PORT = config.port
 const { sequelize } = require('./models')
 
 app.listen(PORT, async () => {
-  await sequelize.sync({ force: false})
+  await sequelize.sync({ force: true})
   console.log(`back server start`)
 })
