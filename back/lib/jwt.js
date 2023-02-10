@@ -1,3 +1,4 @@
-const jwt = require('jsonwebtoken')
+const JWT = require('jsonwebtoken')
 
-console.log(jwt)
+const createToken = JWT.sign(payload, secretKey, options)
+const verifyToken = JWT.verify(token, secretKey)

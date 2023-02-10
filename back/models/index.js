@@ -8,12 +8,12 @@ const Sequelize = require('sequelize')
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config)
 
-// console.log(fs.readdirSync(__dirname).filter(file => file.indexOf('Model') !== -1))
 fs.readdirSync(__dirname)
   .filter(file => file.indexOf('Model') !== -1)
-  .forEach(file => {
+  .forEach(file => {console.log(path.join(__dirname, file))
     require(path.join(__dirname, file))(sequelize, Sequelize)
 })
+
 
 const { models } = sequelize
 for(const key in models){
@@ -21,5 +21,8 @@ for(const key in models){
   models[key].associate(models)
 }
 
-console.log(sequelize)
+module.exports = {
+  sequelize,
+  Sequelize,
+}
 

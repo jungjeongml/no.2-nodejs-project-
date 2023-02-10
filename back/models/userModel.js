@@ -1,5 +1,6 @@
+
 module.exports = (sequelize, Sequelize) => {
-  class User extends Sequelize.model {
+  class User extends Sequelize.Model {
     static initialize(){
       return this.init({
         userid:{
