@@ -9,11 +9,12 @@ router.get('/join', (req, res, next) => {
 })
 
 router.post('/join', (req, res, next) => {
+
   controller.postSignup(req, res, next)
 })
 
-router.post('/login', (req, res, next) => {
-
+router.get('/welcome', (req, res, next) => {
+  
 })
 
 router.get('/profile', (req, res, next) => {

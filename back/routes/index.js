@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const users = require('../src/user/userRoute')
-// const boards = require('../src/board/')
+const auth = require('../src/auth/authRoute')
 
 router.use('/users', users)
+router.use('/auth', auth)
 
 
 module.exports = router

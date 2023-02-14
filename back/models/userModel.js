@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false,
         },
         userpw:{
-          type: Sequelize.STRING(30),
+          type: Sequelize.STRING(200),
           allowNull: false,
         },
         nickname: {
