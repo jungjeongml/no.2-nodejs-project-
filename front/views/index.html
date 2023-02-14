@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link href="../public/css/index.css" type="text/css" rel="stylesheet">
+  <link href="/css/index.css" type="text/css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/63f449674b.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
         <span class="hamburger num3"></span>
       </label>
       <div class="sidemenu">
-        <!-- <form method="post" acction="/">
+        <form method="post" acction="/">
           <div class="side_login">
             <div class="inputbox">
               <input type="text" class="inputtext" placeholder="ID">
@@ -45,8 +46,8 @@
               <button type="submit" class="loginbtn">login</button>
             </div>
           </div>
-        </form> -->
-        <div class="side_login">
+        </form>
+        <!-- <div class="side_login">
           <div class="profile_img">
           <img src="../public/image/Default-Profile-Picture-PNG-Download-Image.png" alt="profileImg" width="40" height="40">
           </div>
@@ -57,8 +58,8 @@
             <a href="">My profile</a>
           </div>
           <div class="welcome logout">
-            <a href="">logout</a>
-          </div>
+            <a href="/logout">logout</a>
+          </div> -->
         </div>
       </div>
   </nav>
@@ -67,7 +68,7 @@
       <div class="content_phrase">
         <p>You can <b>enjoy</b> a lot of benefits when you <strong>sign up</strong>.</p>
         <p>Would you like to <strong>sign up</strong> now?</p>
-        <a href="/">JOIN US</a>
+        <a href="/join">JOIN US</a>
       </div>
     </div>
   </div>

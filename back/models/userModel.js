@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-  class User extends Sequelize.model {
+  class User extends Sequelize.Model {
     static initialize(){
-      this.init({
+      return this.init({
         userid:{
           type: Sequelize.STRING(20),
           allowNull: false,
         },
         userpw:{
-          type: Sequelize.STRING(30),
+          type: Sequelize.STRING(200),
           allowNull: false,
         },
         nickname: {

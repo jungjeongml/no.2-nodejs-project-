@@ -7,5 +7,20 @@ const Sequelize = require('sequelize')
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config)
 
-console.log(sequelize)
+fs.readdirSync(__dirname)
+  .filter(file => file.indexOf('Model') !== -1)
+  .forEach(file => 
+    require(path.join(__dirname, file))(sequelize, Sequelize)
+)
+
+const { models } = sequelize
+for(const key in models){
+  if(typeof models[key].associate !== 'function') continue
+  models[key].associate(models)
+}
+
+module.exports = {
+  sequelize,
+  Sequelize,
+}
 

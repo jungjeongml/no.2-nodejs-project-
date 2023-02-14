@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link href="../../public/css/signup.css" rel="stylesheet" type="text/css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="/css/signup.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <div id="content">
@@ -14,12 +15,12 @@
         <div class="logo">
           <h1>logo</h1>
         </div>
-        <form class="inputFrm" method="post" action="/">
-          <div class="input text"><input class="box" type="text" placeholder="ID"></div>
-          <div class="input password"><input class="box" type="password" placeholder="PASSWORD"></div>
-          <div class="input nickname"><input class="box" type="text" placeholder="NICKNAME"></div>
-          <div class="input number"><input class="box" type="text" placeholder="PHONE NUMBER"></div>
-          <div class="input email"><input class="box" type="text" placeholder="E-MAIL"></div>
+        <form class="inputFrm" method="post" action="/join" >
+          <div class="input text"><input class="box" type="text" placeholder="ID" name="userid"></div>
+          <div class="input password"><input class="box" type="password" placeholder="PASSWORD" name="userpw"></div>
+          <div class="input nickname"><input class="box" type="text" placeholder="NICKNAME" name="nickname"></div>
+          <div class="input number"><input class="box" type="text" placeholder="PHONE NUMBER" name="tellnumber"></div>
+          <div class="input email"><input class="box" type="text" placeholder="E-MAIL" name="email"></div>
           <div class="input join"><button class="joinbtn" type="submit">JOIN</button></div>
         </form>
       </div>
