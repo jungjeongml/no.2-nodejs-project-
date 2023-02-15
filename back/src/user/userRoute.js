@@ -20,6 +20,10 @@ router.post('/joinNk', (req, res, next) => {
   controller.postNk(req, res, next)
 })
 
+router.post('/joinInfo', (req, res, next) => {
+  controller.postInfo(req, res, next)
+})
+
 
 router.get('/welcome', (req, res, next) => {
   

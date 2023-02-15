@@ -19,8 +19,6 @@ class UserController{
     try{
       const userid = req.body
       const user = await this.userService.signId({userid})
-      console.log(user)
-      console.log(Boolean(user.length))
       if( user.length ){
         res.send('impossible')
       } else {
@@ -36,6 +34,22 @@ class UserController{
       const nickname = req.body
       const nick = await this.userService.findNk({nickname})
       if(nick.length){
+        res.send('impossible')
+      } else {
+        res.send('possible')
+      }
+    } catch(e){
+      next(e)
+    }
+  }
+
+  async postInfo(req, res, next){
+    try{
+      console.log(req.body)
+      const { userid, nickname } = req.body
+      const {checkId, checkNk} = await this.userService.signInfo({ userid, nickname }) 
+      console.log({checkId, checkNk})
+      if(checkId.length || checkNk.length){
         res.send('impossible')
       } else {
         res.send('possible')

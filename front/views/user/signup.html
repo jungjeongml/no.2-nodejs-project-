@@ -16,30 +16,29 @@
           <h1>logo</h1>
         </div>
         <form class="inputFrm" method="post" action="/join" >
-          <div class="input text"><input id="idbox" class="box" type="text" placeholder="ID" name="userid">
+          <div class="input text">
+            <input id="idbox" class="box" type="text" placeholder="ID" name="userid" minlength="6" maxlength="12" autofocus>
             <span class="errorBox" style="display: none
             ;">필수 정보입니다.</span>
             <span class="checkBox" style="display: none;">아이디가 중복입니다.</span>
           </div>
           <div class="input password">
-            <input id="pwbox" class="box" type="password" placeholder="PASSWORD" name="userpw">
-            <span class="errorBox" style="display: none
-            ">필수 정보입니다.</span>
+            <input id="pwbox" class="box" type="password" placeholder="PASSWORD" name="userpw" minlength="8" maxlength="15">
+            <span class="errorBox" style="display: none">필수 정보입니다.</span>
           </div>
           <div class="input nickname">
-            <input id="nickbox" class="box" type="text" placeholder="NICKNAME" name="nickname">
-            <span class="errorBox" style="display: none
-            ;">필수 정보입니다.</span>
+            <input id="nickbox" class="box" type="text" placeholder="NICKNAME" name="nickname" minlength="3" maxlength="6">
+            <span class="errorBox" style="display: none;">필수 정보입니다.</span>
             <span class="checkBox" style="display: none;">닉네임이 중복입니다.</span>
           </div>
           <div class="input number">
-            <input class="box" type="number" placeholder="PHONE NUMBER" name="tellnumber">
+            <input class="box" type="text" placeholder="PHONE NUMBER" name="tellnumber" minlength="10" maxlength="11">
           </div>
           <div class="input email">
             <input class="box" type="email" placeholder="E-MAIL" name="email">
           </div>
           <div class="input join">
-            <button class="joinbtn" type="submit">JOIN</button>
+            <button id="joinBtn" class="btn" type="submit">JOIN</button>
           </div>
         </form>
       </div>

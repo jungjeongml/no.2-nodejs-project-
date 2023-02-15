@@ -37,6 +37,21 @@ class UserService {
       throw new Error(e)
     }
   }
+
+  async signInfo({userid, nickname}){
+    try{
+      const obj = {userid, nickname}
+      const idNick = await this.userRepository.getInfo()
+      const checkId = idNick.filter(v => v.userid === obj.userid)
+      const checkNk = idNick.filter(v => v.nickname === obj.nickname)
+      console.log(checkId)
+      console.log(checkNk)
+      return ({checkId, checkNk})
+      // console.log(idNick)
+    } catch(e){
+      throw new Error(e)
+    }
+  }
   
   async signUp({ userid, userpw, nickname, tellnumber, email, profileimg}){
     try{

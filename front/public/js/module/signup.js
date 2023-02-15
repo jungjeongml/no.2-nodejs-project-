@@ -1,10 +1,11 @@
 import request from '/js/lib/request.js'
 
-console.log(request)
+
 
 const idFrm = document.querySelector('#idbox')
 const pwFrm = document.querySelector('#pwbox')
 const nameFrm = document.querySelector('#nickbox')
+const joinFrm = document.querySelector('#joinBtn')
 
 idFrm.addEventListener('focusout', async (e)=>{
   const errorBox = e.target.parentNode.querySelector('.errorBox')
@@ -15,6 +16,7 @@ idFrm.addEventListener('focusout', async (e)=>{
   )
   if(response.data === 'impossible') {
     checkBox.style.display = ''
+    
   } else {
     checkBox.style.display = 'none'
   }
@@ -24,8 +26,10 @@ idFrm.addEventListener('focusout', async (e)=>{
   // console.log(userId)
   // const usersId = response.data.map(v => v.userid)
 
+
   if(e.target.value.length === 0) {
     errorBox.style.display = ''
+
   } else {
     errorBox.style.display = 'none'
   }
@@ -41,7 +45,7 @@ idFrm.addEventListener('focusout', async (e)=>{
 })
 
 pwFrm.addEventListener('focusout', (e)=>{
-  console.log(e.target)
+
   const errorBox = e.target.parentNode.querySelector('.errorBox')
   if(e.target.value.length === 0){
     errorBox.style.display = ''
@@ -54,7 +58,7 @@ nameFrm.addEventListener('focusout', async (e)=>{
   const errorBox = e.target.parentNode.querySelector('.errorBox')
   const checkBox = e.target.parentNode.querySelector('.checkBox')
   const response = await request.post('/users/joinNk/', e.target.value)
-  console.log(response)
+
 
   if(response.data === 'impossible'){
     checkBox.style.display = ''
@@ -70,3 +74,20 @@ nameFrm.addEventListener('focusout', async (e)=>{
 })
 
 
+joinFrm.addEventListener('click', async (e)=>{
+  e.preventDefault
+  const responseId = await request.post('/users/joinId', idFrm.value)
+  const responseNk = await request.post('/users/joinNk', nameFrm.value)
+  console.log(responseId)
+  console.log(responseNk)
+
+  if(responseId.data === 'impossible'){
+    alert('id is already exist')
+    idFrm.focus()
+  } else if (responseNk.data === 'impossible'){
+    alert('nick is already exist')
+    nameFrm.focus()
+  } else {
+    location.href = `http://localhost:3005/welcome?userid=${idFrm.value}`
+  }
+})

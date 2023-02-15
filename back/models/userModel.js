@@ -34,11 +34,11 @@ module.exports = (sequelize, Sequelize) => {
       })
     }
 
-    static associate(models){
-      this.hasMany(models.Board, {
-        foreignKey: 'nickname',
-      })
-    }
+    // static associate(models){
+    //   this.hasMany(models.Board, {
+    //     foreignKey: 'nickname',
+    //   })
+    // }
   }
   User.initialize()
 }
