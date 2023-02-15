@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         userid:{
           type: Sequelize.STRING(20),
           allowNull: false,
+          unique: true,
         },
         userpw:{
           type: Sequelize.STRING(200),
@@ -13,6 +14,7 @@ module.exports = (sequelize, Sequelize) => {
         nickname: {
           type: Sequelize.STRING(30),
           allowNull: false,
+          unique: true,
         },
         tellnumber:{
           type:Sequelize.STRING(15),
@@ -30,7 +32,13 @@ module.exports = (sequelize, Sequelize) => {
       {
         sequelize,
       })
-    } 
+    }
+
+    static associate(models){
+      this.hasMany(models.Board, {
+        foreignKey: 'nickname',
+      })
+    }
   }
   User.initialize()
 }
