@@ -5,13 +5,21 @@ const {userController: controller} = require('./userModule')
 
 
 router.get('/join', (req, res, next) => {
-
+  controller.getSignup(req, res, next)
 })
 
 router.post('/join', (req, res, next) => {
-
   controller.postSignup(req, res, next)
 })
+
+router.post('/joinId', (req, res, next) => {
+  controller.postId(req, res, next)
+})
+
+router.post('/joinNk', (req, res, next) => {
+  controller.postNk(req, res, next)
+})
+
 
 router.get('/welcome', (req, res, next) => {
   
