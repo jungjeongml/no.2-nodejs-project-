@@ -23,7 +23,8 @@ router.post('/', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/join', (req, res) => {
+router.get('/join', async (req, res) => {
+
   res.render('user/signup.html')
 })
 

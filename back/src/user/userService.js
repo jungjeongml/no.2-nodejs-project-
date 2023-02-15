@@ -4,6 +4,39 @@ class UserService {
     this.jwt = jwt
     this.crypto = jwt.crypto
   }
+
+  async getAll(){
+    try{
+      const users = this.userRepository.getUsers()
+      return users
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async signId({userid}){
+    try{
+      const obj = userid
+      const [id] = Object.keys(obj)
+      const usersId = await this.userRepository.getId()
+      const check = usersId.filter(v => v.userid === id)
+      return check
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async findNk({nickname}){
+    try{
+      const obj = nickname
+      const [nick] = Object.keys(obj)
+      const userNick = await this.userRepository.getNk()
+      const check = userNick.filter(v => v.nickname === nick)
+      return check
+    } catch(e){
+      throw new Error(e)
+    }
+  }
   
   async signUp({ userid, userpw, nickname, tellnumber, email, profileimg}){
     try{
