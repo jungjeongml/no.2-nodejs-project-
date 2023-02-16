@@ -20,6 +20,7 @@ router.get('/', (req,res) => {
 })
 
 router.post('/', (req, res) => {
+  console.log(req.auth)
   res.redirect('/')
 })
 
@@ -32,17 +33,20 @@ router.post('/join', async (req, res) => {
   const response = await request.post("/users/join",{
     ...req.body
   })
-
-  const { userid, nickname, tellnumber, email } = response.data
+  // console.log(response)
+  
+  // const { userid, nickname, tellnumber, email } = response.data
+  // res.render('user/welcome.html',{userid, nickname, tellnumber, email})
   // res.redirect(`/welcome?userid=${userid}&nickname=${nickname}&tellnumber=${tellnumber}&email=${email}`)
   // res.redirect(`/welcome?userid=${userid}`)
 })
 
 router.get('/welcome', async (req, res) => {
-  // const response = await request.get('/users/welcome', {
-  //   ...req.body
-  // })
-  // console.log(response)
+  const {token} = req.cookies
+  console.log(token)
+  console.log(req.headers.authorization)
+  // const response = await request.get('/users/welcome', req.query)
+  // console.log(response.data)
   // res.render('user/welcome.html', {
   //   userid,
   //   nickname,
@@ -50,10 +54,6 @@ router.get('/welcome', async (req, res) => {
   //   email,
   // })
   res.render('user/welcome.html')
-})
-
-router.post('/welcome', (req, res) => {
-  res.redirect('/welcome.html')
 })
 
 

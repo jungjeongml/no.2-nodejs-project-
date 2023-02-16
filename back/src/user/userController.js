@@ -68,6 +68,15 @@ class UserController{
       next(e)
     }
   }
-}
 
+  async getWelcome(req, res, next){
+    try{
+      const {userid} = req.body
+      const user = await this.userService.getWel({userid})
+      res.json(user)
+    } catch(e){
+      next(e)
+  } 
+  }
+}
 module.exports = UserController

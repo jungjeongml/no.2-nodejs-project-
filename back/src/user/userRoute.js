@@ -26,7 +26,7 @@ router.post('/joinInfo', (req, res, next) => {
 
 
 router.get('/welcome', (req, res, next) => {
-  
+  controller.getWelcome(req, res, next)
 })
 
 router.get('/profile', (req, res, next) => {

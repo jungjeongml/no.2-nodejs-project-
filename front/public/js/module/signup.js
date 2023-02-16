@@ -6,6 +6,7 @@ const idFrm = document.querySelector('#idbox')
 const pwFrm = document.querySelector('#pwbox')
 const nameFrm = document.querySelector('#nickbox')
 const joinFrm = document.querySelector('#joinBtn')
+const inputFrm = document.querySelector('#inputFrm')
 
 idFrm.addEventListener('focusout', async (e)=>{
   const errorBox = e.target.parentNode.querySelector('.errorBox')
@@ -73,6 +74,24 @@ nameFrm.addEventListener('focusout', async (e)=>{
   }
 })
 
+inputFrm.addEventListener('submit', async (e)=>{
+  try{
+    e.preventDefault
+    const {userid, userpw} = e.target
+    console.log(userid, userpw)
+    console.log(userid.value, userpw.value)
+    const response = await request.post('/auth/join/', {userid:userid.value, userpw:userpw.value})
+    console.log(response)
+    console.log(response.data.token)
+    if(response.status === 200){
+      document.cookie = `token=${response.data.token}`
+      location.href = '/welcome'
+    }
+  } catch (e){
+    throw new Error(e)
+  }
+})
+
 
 joinFrm.addEventListener('click', async (e)=>{
   e.preventDefault
@@ -87,7 +106,6 @@ joinFrm.addEventListener('click', async (e)=>{
   } else if (responseNk.data === 'impossible'){
     alert('nick is already exist')
     nameFrm.focus()
-  } else {
-    location.href = `http://localhost:3005/welcome?userid=${idFrm.value}`
   }
 })
+

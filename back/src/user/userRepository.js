@@ -56,6 +56,19 @@ class UserRepository {
       throw new Error(e)
     }
   }
+
+  async welUser({userid}){
+    try{
+      const user = await this.User.findAll({
+        where: {
+          userid:userid,
+        }
+      })
+      return user
+    } catch(e){
+      throw new Error(e)
+    }
+  }
 }
 
 module.exports = UserRepository

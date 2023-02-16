@@ -66,6 +66,16 @@ class UserService {
       throw new Error(e)
     }
   }
+
+  async getWel({userid}){
+    try{
+      console.log(userid)
+      const userinfo = await this.userRepository.welUser({userid})
+      return userinfo
+    } catch(e){
+      throw new Error(e)
+    }
+  }
 }
 
 module.exports = UserService
