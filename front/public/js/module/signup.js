@@ -74,23 +74,16 @@ nameFrm.addEventListener('focusout', async (e)=>{
   }
 })
 
-inputFrm.addEventListener('submit', async (e)=>{
-  try{
-    e.preventDefault
-    const {userid, userpw} = e.target
-    console.log(userid, userpw)
-    console.log(userid.value, userpw.value)
-    const response = await request.post('/auth/join/', {userid:userid.value, userpw:userpw.value})
-    console.log(response)
-    console.log(response.data.token)
-    if(response.status === 200){
-      document.cookie = `token=${response.data.token}`
-      location.href = '/welcome'
-    }
-  } catch (e){
-    throw new Error(e)
-  }
-})
+// inputFrm.addEventListener('submit', async (e)=>{
+//   try{
+//     e.preventDefault
+//     const {userid, userpw} = e.target
+//     console.log(userid, userpw)
+//     console.log(userid.value, userpw.value)
+//   } catch (e){
+//     throw new Error(e)
+//   }
+// })
 
 
 joinFrm.addEventListener('click', async (e)=>{

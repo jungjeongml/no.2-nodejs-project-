@@ -8,10 +8,9 @@ class AuthService{
   async itoken({userid, userpw}){
     try{
       const hash = await this.crypto.createHmac('sha256', 'jung').update(userpw).digest('hex')
-      // const user = await this.authRepository.ctoken({userid, userpw:hash})
-      // console.log(user)
-      const token = this.jwt.sign({userid, userpw:hash})
-      console.log(token)
+      const user = await this.authRepository.ctoken({userid, userpw:hash})
+      console.log('user::', user)
+      const token = this.jwt.sign(user)
       return token
     } catch(e){
       throw new Error(e)

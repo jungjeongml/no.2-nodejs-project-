@@ -7,6 +7,7 @@ class AuthController{
     try{
       const {userid, userpw} = req.body
       const token = await this.authService.itoken({userid, userpw})
+      console.log(token)
       res.json({token})
     } catch(e){
       next(e)
