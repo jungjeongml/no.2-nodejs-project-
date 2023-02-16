@@ -37,10 +37,34 @@ class UserRepository {
     }
   }
 
+  async getInfo(){
+    try{
+      const info = await this.User.findAll({
+        attributes: ['userid', 'nickname']
+      })
+      return info
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
   async addUser(payload){
     try{
       const user = await this.User.create(payload, {raw: true})
       return user      
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async welUser({userid}){
+    try{
+      const user = await this.User.findAll({
+        where: {
+          userid:userid,
+        }
+      })
+      return user
     } catch(e){
       throw new Error(e)
     }

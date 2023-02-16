@@ -37,6 +37,21 @@ class UserService {
       throw new Error(e)
     }
   }
+
+  async signInfo({userid, nickname}){
+    try{
+      const obj = {userid, nickname}
+      const idNick = await this.userRepository.getInfo()
+      const checkId = idNick.filter(v => v.userid === obj.userid)
+      const checkNk = idNick.filter(v => v.nickname === obj.nickname)
+      console.log(checkId)
+      console.log(checkNk)
+      return ({checkId, checkNk})
+      // console.log(idNick)
+    } catch(e){
+      throw new Error(e)
+    }
+  }
   
   async signUp({ userid, userpw, nickname, tellnumber, email, profileimg}){
     try{
@@ -47,6 +62,16 @@ class UserService {
       const hash = this.crypto.createHmac('sha256', 'jung').update(userpw).digest('hex')
       const user = await this.userRepository.addUser({ userid, userpw:hash, nickname, tellnumber, email, profileimg})
       return user
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async getWel({userid}){
+    try{
+      console.log(userid)
+      const userinfo = await this.userRepository.welUser({userid})
+      return userinfo
     } catch(e){
       throw new Error(e)
     }

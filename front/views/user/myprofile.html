@@ -12,17 +12,18 @@
     <div id="content_wrap">
       <h1>logo</h1>
       <table>
-        <form id="profile" method="post" action="/welcome" enctype="multipart/form-data">
+        <form id="profile" method="post" action="/myprofile" enctype="multipart/form-data">
           <tr>
             <th>
               <div class="imgtext">프로필 사진</div>
             </th>
             <td>
               <div class="profile_img">
-                <img id="imgThumb" src="../../public/image/Default-Profile-Picture-PNG-Download-Image.png" width="100" height="100">
+                <img id="imgThumb" src="/image/Default-Profile-Picture-PNG-Download-Image.png" width="100" height="100">
               </div>
               <div class="change_btn">
-                <button id="submit_btn" type="submit">사진 변경</button>
+                <input type="file" name="upload" id="">
+                <!-- <button id="submit_btn" type="submit">사진 변경</button> -->
               </div>
             </td>
           </tr>

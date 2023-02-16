@@ -6,7 +6,7 @@ class JWT {
   }
 
   sign(data, options = {}){
-    const header = this.encode({ typ:"JWT", alg:"HS256"})
+    const header = this.encode({ typ: "JWT", alg: "HS256" })
     const payload = this.encode({...data, ...options})
     const signature = this.createSignature([header, payload])
 
@@ -25,16 +25,16 @@ class JWT {
   }
 
   encode(obj){
-    return Buffer.from(JSON.stringify(obj).toString("base64url").replace(/[=]/g, ""))
+    return Buffer.from(JSON.stringify(obj)).toString("base64").replace(/[=]/g, "")
   }
 
   decode(base64url){
-    return JSON.parse(Buffer.from(base64url, "base64url").toString("utf-8"))
+    return JSON.parse(Buffer.from(base64url, "base64").toString("utf-8"))
   }
 
   createSignature(base64urls, salt='jung'){
     const data = base64urls.join('.')
-    return this.crypto.createHmac("sha256", salt).update(data).digest("base64url").replace(/[=]/g, "")
+    return this.crypto.createHmac("sha256", salt).update(data).digest("base64").replace(/[=]/g, "")
   }
 }
 
