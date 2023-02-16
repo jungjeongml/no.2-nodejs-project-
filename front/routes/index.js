@@ -64,7 +64,7 @@ router.post('/join', async (req, res) => {
   // res.redirect(`/welcome?userid=${userid}`)
 })
 
-router.get('/welcome', async (req, res) => {
+router.get('/myprofile', async (req, res) => {
   // console.log(req.cookies)
   // const {token} = req.cookies
   // console.log(token)

@@ -3,7 +3,6 @@ const router = require('./routes')
 const cors = require('cors')
 const app = express()
 const cookieParser = require('cookie-parser')
-const axios = require('axios')
 
 
 app.use(express.urlencoded({ extended : false }))
@@ -13,6 +12,7 @@ app.use(cors({
   origin: true,
   credentials: true,
 }))
+app.use(express.static('uploads'))
 
 
 app.use(router)
