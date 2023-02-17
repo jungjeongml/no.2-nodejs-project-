@@ -19,7 +19,6 @@ router.use((req, res, next)=>{
     const {token} = req.cookies
     const [header, payload, signature] = token.split('.')
     const pl = JSON.parse(Buffer.from(payload, 'base64').toString('utf-8'))
-    console.log('pl::', pl)
     req.user = pl
   } catch(e){
 
@@ -53,7 +52,7 @@ router.post('/join', async (req, res) => {
   // console.log(aresponse.data.token)
   if(aresponse.status === 200){
     res.setHeader('Set-cookie', `token=${aresponse.data.token}`)
-    res.redirect(`/welcome`)
+    res.redirect(`/myprofile`)
   }
   
   // console.log(response)
@@ -69,7 +68,6 @@ router.get('/myprofile', async (req, res) => {
   // const {token} = req.cookies
   // console.log(token)
   // const {userid, nickname, tellnumber, email} = req.query
-  console.log('requser::', req.user)
   const {userid, nickname, tellnumber, email} = req.user
   
   // const response = await request.get('/users/welcome', req.query)
@@ -80,11 +78,14 @@ router.get('/myprofile', async (req, res) => {
   //   tellnumber,
   //   email,
   // })
-  res.render('user/welcome.html',{
+  console.log(req.query)
+  const {filepath} = req.query
+  res.render('user/myprofile.html',{
     userid,
     nickname,
     tellnumber,
-    email
+    email,
+    filepath
   })
 })
 

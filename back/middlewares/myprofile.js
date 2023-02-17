@@ -7,7 +7,7 @@ const upload = multer({
       done(null, 'uploads/profile')
     },
     filename: (req, file, done)=>{
-      const ext = path.extname(file.originalname, ext)
+      const ext = path.extname(file.originalname)
       const basename = path.basename(file.originalname, ext)
       const filename = `${basename}_${Date.now()}${ext}`
       done(null, filename)

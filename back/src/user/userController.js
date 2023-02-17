@@ -78,5 +78,20 @@ class UserController{
       next(e)
   } 
   }
+
+  async postProfile(req, res, next){
+    try{
+      const {filename} = req.file
+      const filePath = `http://localhost:3000/profile/${filename}`
+      const {userid} = req.body
+      const id = userid.split("`")[1]
+      console.log('id::',id)
+      const profile = await this.userService.postImg({filename, id})
+      console.log('profile::', profile)
+      res.json({profile, filePath})
+    } catch(e){
+      next(e)
+    }
+  }
 }
 module.exports = UserController

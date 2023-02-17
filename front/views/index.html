@@ -33,21 +33,8 @@
         <span class="hamburger num2"></span>
         <span class="hamburger num3"></span>
       </label>
-      <div class="sidemenu">
-        <form method="post" acction="/">
-          <div class="side_login">
-            <div class="inputbox">
-              <input type="text" class="inputtext" placeholder="ID">
-            </div>
-            <div class="inputbox">
-              <input type="password" class="inputtext" placeholder="PASSWORD">
-            </div>
-            <div class="sidebtn">
-              <button type="submit" class="loginbtn">login</button>
-            </div>
-          </div>
-        </form>
-        <!-- <div class="side_login">
+        <% if token %>
+        <div class="side_login">
           <div class="profile_img">
           <img src="../public/image/Default-Profile-Picture-PNG-Download-Image.png" alt="profileImg" width="40" height="40">
           </div>
@@ -59,7 +46,23 @@
           </div>
           <div class="welcome logout">
             <a href="/logout">logout</a>
-          </div> -->
+          </div>
+          <% else %>
+          <div class="sidemenu">
+            <form method="post" acction="/">
+              <div class="side_login">
+                <div class="inputbox">
+                  <input type="text" class="inputtext" placeholder="ID">
+                </div>
+                <div class="inputbox">
+                  <input type="password" class="inputtext" placeholder="PASSWORD">
+                </div>
+                <div class="sidebtn">
+                  <button type="submit" class="loginbtn">login</button>
+                </div>
+              </div>
+            </form>
+        <% endif %>
         </div>
       </div>
   </nav>

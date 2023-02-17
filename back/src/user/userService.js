@@ -76,6 +76,15 @@ class UserService {
       throw new Error(e)
     }
   }
+
+  async postImg({filename, id}){
+    try{
+      const upUser = await this.userRepository.updateUser({filename, id})
+      return upUser
+    } catch(e){
+      throw new Error(e)
+    }
+  }
 }
 
 module.exports = UserService
