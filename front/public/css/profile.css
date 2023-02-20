@@ -70,3 +70,7 @@ content #content_wrap table tr td {
   margin-left: 25px;
 }
 
+#inputImg {
+  display: none;
+}
+

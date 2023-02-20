@@ -76,6 +76,26 @@ class UserService {
       throw new Error(e)
     }
   }
+
+  async postImg({filename, id}){
+    try{
+      const upUser = await this.userRepository.updateUser({filename, id})
+      return upUser
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async check(token){
+    try{
+      const {userid} = this.jwt.verify(token, 'jung')
+      console.log(userid)
+      const user = await this.userRepository.getUser(userid)
+      return user
+    } catch(e){
+      throw new Error(e)
+    }
+  }
 }
 
 module.exports = UserService

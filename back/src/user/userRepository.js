@@ -69,6 +69,35 @@ class UserRepository {
       throw new Error(e)
     }
   }
+
+  async updateUser({filename, id}){
+    try{
+      console.log({filename, id})
+      const user = await this.User.update({
+        profileimg: filename,
+      },{
+        where: { userid: id }
+      })
+      console.log(user)
+      return user
+    } catch(e){
+      throw new Error(e)
+    }
+  }
+
+  async getUser(userid){
+    try{
+      const user = this.User.findOne({
+        raw: true,
+        where:{
+          userid
+        }
+      })
+      return user
+    } catch(e){
+      throw new Error(e)
+    }
+  }
 }
 
 module.exports = UserRepository

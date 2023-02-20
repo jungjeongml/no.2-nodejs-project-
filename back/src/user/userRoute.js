@@ -3,7 +3,9 @@ const upload = require('../../middlewares/myprofile')
 const router = express.Router()
 const {userController: controller} = require('./userModule')
 
-
+router.get('/login', (req, res, next)=>{
+  controller.login(req, res, next)
+})
 
 router.get('/join', (req, res, next) => {
   controller.getSignup(req, res, next)
@@ -30,9 +32,7 @@ router.get('/profile', (req, res, next) => {
 })
 
 router.post('/profile', upload.single('upload'), (req, res, next) => {
-  console.log(req.file)
-  console.log(req.body)
-  res.send('upload')
+  controller.postProfile(req, res, next)
 })
 
 router.get('/logout', (req, res, next) => {

@@ -109,13 +109,12 @@ ul > li {
   border-radius: 10px;
 }
 
-#menu_icon:checked + label + div{
+#menu_icon:checked + label + div {
   right: 0;
 }
 
 .content {
   width: 100%;
-  
 }
 
 .content_wrap {
@@ -187,7 +186,6 @@ ul > li {
 
 .inputbox {
   width: 250px;
-  
   margin-top: 10px;
 }
 
