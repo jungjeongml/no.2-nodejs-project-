@@ -45,9 +45,17 @@
             <div class="welcome profile">
               <a href="/myprofile">My profile</a>
             </div>
-            <div id="logout "class="welcome logout">
-              <a href="/logout">logout</a>
+            <div class="welcome logout">
+              <a href="/logout" id="logout">logout</a>
             </div>
+            <script type="text/javascript">
+              const logout = document.querySelector('#logout')
+              logout.addEventListener("click", (e) => {
+                e.preventDefault()
+                document.cookie = "token=; expires=Thum 01 Jan 1970 00:00:01 GMT"
+                location.href = "/"
+              })
+            </script>
         </div>
         {% else %}
         <form method="post" name="loginfrm" id="login
