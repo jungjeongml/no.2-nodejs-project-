@@ -3,7 +3,9 @@ const upload = require('../../middlewares/myprofile')
 const router = express.Router()
 const {userController: controller} = require('./userModule')
 
-
+router.get('/login', (req, res, next)=>{
+  controller.login(req, res, next)
+})
 
 router.get('/join', (req, res, next) => {
   controller.getSignup(req, res, next)

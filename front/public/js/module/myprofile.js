@@ -10,7 +10,6 @@ frm.addEventListener('submit', async (e)=>{
 
   // const [header, payload, signture] = document.cookie.split(".")
   const body = new FormData(e.target)
-  console.log(body)
 
   const response = await request.post('/users/profile', body, {
     headers: {
@@ -20,6 +19,7 @@ frm.addEventListener('submit', async (e)=>{
   console.log(response.data)
   const {filePath} = response.data
   console.log(filePath)
-  location.href = "/myprofile?filepath=" + filePath
+  // location.href = "/myprofile?filepath=" + filePath
+  location.href = "/myprofile"
 
 })

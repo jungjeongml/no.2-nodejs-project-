@@ -27,15 +27,49 @@ router.use((req, res, next)=>{
   }
 })
 
-router.get('/', (req,res) => {
-  console.log(req.cookies)
-
-  res.render('index.html')
+router.get('/', async (req, res, next) => {
+  // try{
+  // const token = req.cookies.token
+  // if(token !== undefined){
+  //   const response = await request.get('/users/login', {
+  //     headers: {
+  //       Authorization : `Bearer ${token}`
+  //     }
+  //   })
+  //   console.log(response)
+  //   res.render('index.html', response.data)
+  // }
+  // res.render('index.html')
+  // } catch(e){
+  //   throw new Error(e)
+  // }
+  console.log(req.user)
+  if(req.user === undefined) return res.render('index.html')
+  const { nickname, profileimg } = req.user
+  console.log(profileimg)
+  const filepath = `http://localhost:3000/profile/${profileimg}`
+  res.render('index.html', {
+    nickname,
+    filepath,
+  })
 })
 
-router.post('/', (req, res) => {
-  // console.log(req.auth)
-  res.redirect('/')
+router.post('/', async (req, res, next) => {
+  try{
+  const response = await request.post('/auth/', {
+    ...req.body
+  })
+  if(response.status === 200){
+    // console.log(response.data)
+    if(response.data !== 'not user')
+    res.setHeader('Set-cookie', `token=${response.data.token}`)
+    res.redirect(`/`)
+  } else {
+    res.redirect(`/`)
+  }
+  } catch(e){
+    throw new Error(e)
+  }
 })
 
 router.get('/join', async (req, res) => {
@@ -43,7 +77,8 @@ router.get('/join', async (req, res) => {
   res.render('user/signup.html')
 })
 
-router.post('/join', async (req, res) => {
+router.post('/join', async (req, res, next) => {
+  try{
   const response = await request.post("/users/join",{
     ...req.body
   })
@@ -54,7 +89,9 @@ router.post('/join', async (req, res) => {
     res.setHeader('Set-cookie', `token=${aresponse.data.token}`)
     res.redirect(`/myprofile`)
   }
-  
+  } catch(e){
+    throw new Error(e)
+  }
   // console.log(response)
   
   // const { userid, nickname, tellnumber, email } = response.data
@@ -68,7 +105,8 @@ router.get('/myprofile', async (req, res) => {
   // const {token} = req.cookies
   // console.log(token)
   // const {userid, nickname, tellnumber, email} = req.query
-  const {userid, nickname, tellnumber, email} = req.user
+  const {userid, nickname, tellnumber, email, profileimg} = req.user
+  const filepath = `http://localhost:3000/profile/${profileimg}`
   
   // const response = await request.get('/users/welcome', req.query)
   // console.log(response.data)
@@ -78,8 +116,8 @@ router.get('/myprofile', async (req, res) => {
   //   tellnumber,
   //   email,
   // })
-  console.log(req.query)
-  const {filepath} = req.query
+  // console.log(req.query)
+  // const {filepath} = req.query
   res.render('user/myprofile.html',{
     userid,
     nickname,

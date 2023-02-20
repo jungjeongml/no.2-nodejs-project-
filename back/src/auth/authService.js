@@ -9,7 +9,6 @@ class AuthService{
     try{
       const hash = await this.crypto.createHmac('sha256', 'jung').update(userpw).digest('hex')
       const user = await this.authRepository.ctoken({userid, userpw:hash})
-      console.log('user::', user)
       const token = this.jwt.sign(user)
       return token
     } catch(e){

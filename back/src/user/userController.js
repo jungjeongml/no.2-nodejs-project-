@@ -93,5 +93,19 @@ class UserController{
       next(e)
     }
   }
+
+  async login(req, res, next){
+    try{
+      if(! req.headers.authorization){
+        throw new Error('Authorization is not existed')
+      }
+      const [type, token] = req.headers.authorization.split(' ')
+      if(type.toLowerCase() !== 'bearer') throw new Error('Authorization Type Error')
+      const user = await this.userService.check(token)
+      res.json(user)
+    } catch(e){
+      next(e)
+    }
+  }
 }
 module.exports = UserController

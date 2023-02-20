@@ -33,37 +33,38 @@
         <span class="hamburger num2"></span>
         <span class="hamburger num3"></span>
       </label>
-        <% if token %>
+      <div class="sidemenu">
+        {% if nickname %}
         <div class="side_login">
           <div class="profile_img">
-          <img src="../public/image/Default-Profile-Picture-PNG-Download-Image.png" alt="profileImg" width="40" height="40">
-          </div>
-          <div class="welcome phrase">
-            <p>Welcome xxx!!</p>
-          </div>
-          <div class="welcome profile">
-            <a href="">My profile</a>
-          </div>
-          <div class="welcome logout">
-            <a href="/logout">logout</a>
-          </div>
-          <% else %>
-          <div class="sidemenu">
-            <form method="post" acction="/">
-              <div class="side_login">
-                <div class="inputbox">
-                  <input type="text" class="inputtext" placeholder="ID">
-                </div>
-                <div class="inputbox">
-                  <input type="password" class="inputtext" placeholder="PASSWORD">
-                </div>
-                <div class="sidebtn">
-                  <button type="submit" class="loginbtn">login</button>
-                </div>
-              </div>
-            </form>
-        <% endif %>
+            <img src="{{filepath}}" alt="profileImg" width="40" height="40">
+            </div>
+            <div class="welcome phrase">
+              <p>Welcome {{nickname}}!!</p>
+            </div>
+            <div class="welcome profile">
+              <a href="/myprofile">My profile</a>
+            </div>
+            <div id="logout "class="welcome logout">
+              <a href="/logout">logout</a>
+            </div>
         </div>
+        {% else %}
+        <form method="post" name="loginfrm" id="login
+        " acction="/">
+          <div class="side_login">
+            <div class="inputbox">
+              <input type="text" class="inputtext" name="userid" placeholder="ID">
+            </div>
+            <div class="inputbox">
+              <input type="password" class="inputtext" name="userpw" placeholder="PASSWORD">
+            </div>
+            <div class="sidebtn">
+              <button type="submit" class="loginbtn">login</button>
+            </div>
+          </div>
+        </form>
+        {% endif %}
       </div>
   </nav>
   <div class="content">
@@ -75,6 +76,6 @@
       </div>
     </div>
   </div>
-  
+<script type="module" src="/js/module/index.js"></script>
 </body>
 </html>
